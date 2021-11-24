@@ -1,0 +1,12 @@
+Publicacao
+
+Alterar o arquivo syntaxex/msxbasic.tmLanguage.json
+Em seguida atualizar o Change log com a nova versao e alteracoes
+Alterar o arquivo package.json para refletir a nova versao
+Notas importantes no README.MD
+Empacotar a extensao vsce package (npm install -g vsce se necessario)
+Remover a versao anterior
+git add .
+git commit -m "comentario"
+git push origin main
+atualizar no site https://marketplace.visualstudio.com/manage/publishers/wilsonpilon

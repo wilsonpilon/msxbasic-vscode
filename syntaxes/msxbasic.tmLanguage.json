@@ -1,0 +1,58 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "MSX-Basic",
+    "patterns": [{
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [{
+                    "name": "keyword.control.msxbasic",
+                    "match": "(?i:\\b(AUTO|BEEP|BLOAD|BSAVE|CALL|CIRCLE|CLEAR|CLOAD|CLOSE|CLS|COLOR|CONT|CSAVE|CSRLIN|DATA|DEF|DEFFN|DEFINT|DEFSNG|DEFDBL|DEFSTR|DEFUSR|DELETE|DIM|DRAW|END|ERASE|ERROR|FOR|NEXT|FRE|GOSUB|RETURN|GOTO|IF|THEN|ESLE|INPUT|INTERVAL|ON|OFF|KEY|LET|LINE|LIST|LLIST|LOAD|LOCATE|LPRINT|USING|MAXFILES|MERGE|MOTOR|NEW|SPRITE|OPEN|OUT|PAINT|POKE|PRESET|PRINT|PSET|PUT|READ|RENUM|RESTORE|RESUME|RUN|SAVE|SCREEN|SOUND|SPRITE|STOP|STRIG|SWAP|TIME|TROFF|TRON|VDP|VPOKE|WAIT|WIDTH|COPY|CVI|CVS|CVD|DSKF|DSKI|DSKO|EOF|FIELD|FILES|FORMAT|GET|KILL|LOC|LOF|LSET|MKI|MKS|MKD|NAME|RESET|SYSTEM|STEP|OUTPUT|AS|DECLARE|DEFINE|INCLUDE)\\b)"
+                },
+                {
+                    "name": "keyword.operator.logical.msxbasic",
+                    "match": "(?i:\\b(AND|NOT|OR|XOR|MOD)\\b)"
+                },
+                {
+                    "name": "entity.name.function.msxbasic",
+                    "match": "(?i:\\b(ABS|ASC|ATN|BASE|BIN|CDBL|CHR|CINT|COS|CSNG|EOF|ERL|ERR|EXP|FIX|HEX|INKEY|INP|INSTR|INT|LEFT|LEN|LOG|LPOS|MID|OCT|PAD|PDL|PEEK|POINT|POS|RIGHT|RND|SGN|SPACE|SPC|SQL|STICK|STR|STRING|TAB|TAN|USR|VAL|VARPTR|VPEEK)\\b)"
+                },
+                {
+                    "name": "entity.name.type.msxbasic",
+                    "match": "(?i:\\b(DEFINT|DEFSNG|DEFDBL|DEFSTR)\\b)"
+                },
+                {
+                    "name": "comment.line.msxbasic",
+                    "match": "(?i:(\\bREM\\b|').*)"
+                },
+                {
+                    "name": "variable.name.msxbasic",
+                    "match": "\\b[A-Za-z](\\$|[A-Za-z0-9]*)"
+                },
+                {
+                    "name": "constant.numeric.msxbasic",
+                    "match": "-?\\b((([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f)?|(\\$[a-zA-Z0-9]+)|(@[0|1]+)\\b"
+                },
+                {
+                    "match": "&|\\*|\\-|\\+|=|<>|<|>|\\|\\^|<<|>>|~",
+                    "name": "keyword.operator.arithmetic.msxbasic"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.msxbasic",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [{
+                "name": "constant.character.escape.msxbasic",
+                "match": "\\\\."
+            }]
+        }
+    },
+    "scopeName": "source.msxbasic"
+}

@@ -1,0 +1,153 @@
+declare contador, tecla
+declare posx_placar, randomico, score, record, bonus, desconto
+declare posicaox, posicaoy, deltax, deltay
+
+{base}
+    [prepara_fonte]:
+    gosub {carrega_fonte}:
+    color 7,0,0:
+    screen 1,2:
+    key off:
+    randomico=rnd(-time):
+    vpoke 8218,128:
+    vpoke 8219,128:
+    vpoke 8220,240:
+    gosub {redefine_graficos}
+
+{reinicia}
+    gosub {tela}:
+    posx_placar=6:
+    gosub {placar}:
+    posx_placar=19:
+    temp=score:
+    score=record:
+    gosub {placar}:
+    score=temp:
+    on sprite gosub {game_over}
+
+{controle}
+    sprite on:
+    temp=stick(0):
+    deltax=0:
+    if temp=7 then deltax=-1
+    if temp=3 then deltax=1
+    if temp=5 and posicaoy<>24 then yd=-2 else yd=2
+    posicaox=posicaox+deltax:
+    posicaoy=posicaoy+yd:
+    if posicaoy=152 then {marca_pontos}
+    put sprite 1,(posicaox,posicaoy),15,1
+    desconto-=1
+    if desconto=0 and bonus>0 then desconto=50:
+        bonus-=1:
+        locate 13,1:
+        print bonus
+    temp=usr3(0):
+    goto {controle}
+
+{marca_pontos}
+    score=score+bonus:
+    play"o5l40cdefga":
+    for contador=1 to 1000:
+    next contador:
+    posx_placar=6:
+    gosub {placar}:
+    gosub {meteoros}:
+    gosub {controle}
+
+
+{game_over}
+    play "o1l10cc":
+    for contador=1 to 1000:
+    next contador:
+    sprite off:
+    if score>record then record=score
+    score=record:
+    locate 7,10:
+    print "Novo Jogo <S/N>?":
+    posx_placar=19:
+    gosub {placar}
+{wtecla}
+    temp$=inkey$:if temp$ = "S" or temp$="s" then _
+        cls:
+        score=0:
+        gosub {meteoros}:
+        return {reinicia}
+    if temp$="N" or temp$="n" then run "program.bas"
+    goto {wtecla}
+
+{placar}
+    locate posx_placar,1:
+    print right$(str$(10000+score),4):
+    return
+
+{redefine_graficos}
+    restore {char_data}:
+    for contador=0 to 39:
+        read temp:
+        vpoke 1760+i*8+contador,temp
+    next contador:
+    restore {sprite_data}
+    for contador=1 to 56:
+        read temp:
+        s$=s$+chr$(temp):
+    next contador:
+    sprite$(1)=mid$(s$,1,32):
+    for contador=2 to 16:
+        sprite$(contador)=mid$(s$,33+int(rnd(1)*3)*8,8):
+    next contador:
+    return
+
+{tela}
+    locate 0,19:
+    for contador=1 to 29:
+        print chr$(rnd(1)*3+221);:
+    next contador:
+    for contador=1 to 87:
+        print chr$(219);:
+    next contador:
+    restore {screen_data}:
+    for contador=1 to 4:
+        read posicaox,posicaoy:
+        locate posicaox,posicaoy:
+        print chr$(220);:
+    next contador:
+    for contador=1 to 50:
+        locate rnd(1)*30,3+rnd(1)*16:
+        print chr$(224);:
+    next contador
+
+{meteoros}
+    put sprite 1,(1,208),,1
+    for posicaox=0 to 2:
+        for posicaoy=0 to 4:
+            temp=2+posicaox+posicaoy*3:
+            put sprite temp,(85*posicaox+rnd(1)*60,56+16*posicaoy),10,temp:
+        next posicaoy:
+    next posicaox:
+    posicaox=122:
+    posicaoy=24:
+    yd=1:
+    bonus=10:
+    desconto=1:
+    return
+
+{char_data}
+    data 255,255,193,62,124,131,255,255, _
+         0,0,12,28,62,62,127,255, _
+         0,0,0,32,48,120,124,255, _
+         0,0,0,0,0,0,0,0, _
+         0,0,128,0,0,1,0,0
+{sprite_data}
+    data 3,15,63,63,63,63,63,63, _
+         15,7,13,25,63,32,112,248, _
+         192,240,252,252,252,252,252,252, _
+         240,224,176,152,252,4,14,31
+    data 0,24,60,126,126,252,248,32, _
+         6,15,63,127,127,30,0,0, _
+         24,124,254,254,255,255,56,16
+{screen_data}
+    data 5,20,29,20,18,21,10,22
+
+
+include "fontes.bad"
+

@@ -1,0 +1,84 @@
+{
+    "name": "msxbasic",
+    "displayName": "MSX-Basic",
+    "description": "MSX BASIC syntax highlighting",
+    "version": "1.0.21",
+    "author": "Wilson 'Barney' Pilon",
+    "publisher": "wilsonpilon",
+    "homepage": "https://www.msxbasic.com",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "activationEvents": [
+        "onCommand:extension.msxbasic.create"
+    ],
+    "main": "./extension.js",
+    "icon": "images/msxbasic.png",
+    "categories": [
+        "Programming Languages"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/wilsonpilon/msxbasic-vscode.git"
+    },
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.msxbasic.create",
+                "title": "MSX Basic: Create MSX Basic Project",
+                "category": "project"
+            }
+        ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "extension.msxbasic.create",
+                    "when": "explorerResourceIsFolder",
+                    "group": "msxbasic@1"
+                }
+            ]
+        },
+        "languages": [
+            {
+                "id": "msxbasic",
+                "aliases": [
+                    "MSX Basic",
+                    "msxbasic"
+                ],
+                "extensions": [
+                    ".bas",
+                    ".bad",
+                    ".ldr"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "msxbasic",
+                "path": "./snippets.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "msxbasic",
+                "scopeName": "source.msxbasic",
+                "path": "./syntaxes/msxbasic.tmLanguage.json"
+            }
+        ],
+        "configuration": [
+            {
+                "type": "object",
+                "title": "MSX Basic Dignified Template Configuration",
+                "properties": {}
+            }
+        ]
+    },
+    "scripts": {},
+    "devDependencies": {
+        "@types/vscode": "^1.50.0"
+    },
+    "dependencies": {
+        "vsce": "^2.5.0"
+    }
+}

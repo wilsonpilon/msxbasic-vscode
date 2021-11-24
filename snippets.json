@@ -1,0 +1,90 @@
+{
+    "For Loop": {
+        "prefix": "for-next",
+        "body": [
+            "for ${1:var}=${2|init,0,1,5,8,10,100|} to ${3|end,8,10,50,100,1000,256|}:",
+            "  'commands:",
+            "next ${1:var}"
+        ],
+        "description": "For x=num1 to num1:next x"
+    },
+    "For Loop Step": {
+        "prefix": "for-step-next",
+        "body": [
+            "for ${1:var}=${2|init,0,1,5,8,10,100|} to ${3|end,8,10,50,100,1000,256|} step ${4|step,2,5,8,10,16|}:",
+            "  'commands:",
+            "next ${1:var}"
+        ],
+        "description": "For x=num1 to num2 step num3:next x"
+    },
+    "int For Loop": {
+        "prefix": "for-next-intmp",
+        "body": [
+            "for ${1|var,tm|}%=${2|init,0,1,5,8,10,100|} to ${3|end,8,10,50,100,1000,256|}",
+            "  'commands:",
+            "next $1"
+        ],
+        "description": "For x%=num1 to num1:next x%"
+    },
+    "If Then": {
+        "prefix": "if-then",
+        "body": [
+            "if (${1:par1} ${2|oper,=,<>,<,>,<=,>=|} ${3:par2}) _",
+            "then _",
+            "  'Do Something:"
+        ],
+        "description": "If (par1 op par2) then command"
+    },
+    "If Then Else": {
+        "prefix": "if-then-else",
+        "body": [
+            "if (${1:par1} ${2|oper,=,<>,<,>,<=,>=|} ${3:par2}) _",
+            "then _",
+            "  'commands:",
+            "else _",
+            "  'commands:"
+        ],
+        "description": "If (par1 op par2) then command:else command"
+    },
+    "Inkey Catch": {
+        "prefix": "inkey-key",
+        "body": [
+            "if inkey$<>[\"\"] goto {@}",
+            "${1|var,a$,ky$|} = inkey$ : if $1=[\"\"] goto {@}"
+        ],
+        "description": "Read a key with inkey$"
+    },
+    "Line Simple": {
+        "prefix": "line",
+        "body": [
+            "line (${1|x1,0,128|}, ${2|y1,0,96|}) - (${3|x2,128,255|},${4|y2,96,191|}), ${4|color,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15|}"
+        ],
+        "description": "Line straight with two points"
+    },
+    "Box": {
+        "prefix": "lineb",
+        "body": [
+            "line (${1|x1,0,128|}, ${2|y1,0,96|}) - (${3|x2,128,255|},${4|y2,96,191|}), ${4|color,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15|}, ${5|b,bf|}"
+        ],
+        "description": "Empty or filled box"
+    },
+    "Sprite Sample 8x8": {
+        "prefix": "sprite8",
+        "body": [
+            "restore {@}:",
+            "for ${2:var}%=0 to 7:",
+            "  read ${3:var}$:",
+            "  ${4:vsprite}$=${4}$+chr$(val(\"&B\"+${3}$)):",
+            "next $2%:",
+            "  data 00000000, _",
+            "       00000000, _",
+            "       00000000, _",
+            "       00000000, _",
+            "       00000000, _",
+            "       00000000, _",
+            "       00000000, _",
+            "       00000000"
+        ],
+        "description": "Create a sprite with 8x8 size"
+    }
+}
