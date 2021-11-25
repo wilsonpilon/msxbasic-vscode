@@ -1,0 +1,23 @@
+include "msx.bad"
+
+## ***** Programa Principal **************************************************
+{main}
+    defint a-z:
+    gosub {desktop}:
+    gosub {routine}:
+    end
+
+{desktop}
+    screen 0:
+    width 40:
+    key off
+    cls:
+    [?@]15,0 "MSX Program"
+    [waitkey]
+    return
+
+
+{routine}
+    [?@]0,3 "Start"
+    [waitkey]
+    return

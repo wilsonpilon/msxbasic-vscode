@@ -1,0 +1,9 @@
+declare contadori, contadore, temp, auxiliar, tecla
+
+define [waitkey] [aa$=inkey$:if aa$="" then {@}]
+define [clrbuffer] [aa$=inkey$:if aa$<>"" then {@}]
+define [debug][locate 0,4:print "debug: ";[0]:aa$=input$(1)]
+define [cESC][if asc(aa$) = 27 then]
+define [cENTER][if asc(aa$) = 13 then]
+define [cDOWN][if asc(aa$) = 31 then]
+define [cUP][if asc(aa$) = 30 then]

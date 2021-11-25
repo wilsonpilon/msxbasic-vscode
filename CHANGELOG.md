@@ -1,8 +1,11 @@
 # Change Log
+## [1.0.22]
+-- Task mostly work (need to copy $HOME/.vscode to you project, automation in the going)
 ## [1.0.21]
 -- Fix template funcion Skel
 -- Remove TypeScript and 'Project Templates' to create a new one from scratch
 -- All previous commits (GIT) were discarded, this is a fresh one
+-- Create a skel for a task: Compile with MSX BASIC Diginified
 ## [1.0.19]
 - Include Sprite 8x8 Snippet
 ## [1.0.18]

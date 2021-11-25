@@ -1,13 +1,25 @@
 {
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
-    "version": "2.0.0",
+    "version": "0.0.1",
     "tasks": [
         {
             "label": "make",
             "type": "shell",
-            "command": "echo Hello ${workspaceFolderBasename}",
-            "args": ["msx","dos"],
+            "command": "python ./bin/msxbadig.py ${workspaceFolder}/main.bad",
+            "args": [
+                "-tt","b",
+                "-of","b",
+                "-el","32",
+                "-ls","1",
+                "-lp","1",
+                "-lz","",
+                "-ll","2",
+                "-nc","",
+                "-vs","5",
+                "-vb","1",
+                "-rh",""
+            ],
             "presentation": {
                 "echo": true,
                 "reveal": "always",

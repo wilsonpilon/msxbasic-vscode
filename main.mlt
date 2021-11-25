@@ -1,0 +1,26 @@
+' -------------------------------------
+' MSX Basic Tokenizer: "main.asc"
+' Date: 2021-11-25 08:45:45
+' -------------------------------------
+
+8000: ff                                                                                                               start
+8001: 1680 0100 ac 61 f2 7a 3a 8d 0e 02 00 3a 8d 0e 06 00 3a 81 00                                                     01 definta-z:gosub2:gosub6:end
+8016: 2480 0200 c5 11 3a a0 0f 28 3a cc eb 00                                                                          02 screen0:width40:keyoff
+8024: 3f80 0300 9f 3a d8 0f 0f 2c 11 3a 91 22 4d 53 58 20 50 72 6f 67 72 61 6d 22 00                                   03 cls:locate15,0:print"MSX Program"
+803f: 5580 0400 61 61 24 ef ec 3a 8b 61 61 24 ef 22 22 da 0e 04 00 00                                                  04 aa$=inkey$:ifaa$=""then04
+8055: 5b80 0500 8e 00                                                                                                  05 return
+805b: 6d80 0600 d8 11 2c 14 3a 91 22 53 74 61 72 74 22 00                                                              06 locate0,3:print"Start"
+806d: 8380 0700 61 61 24 ef ec 3a 8b 61 61 24 ef 22 22 da 0e 07 00 00                                                  07 aa$=inkey$:ifaa$=""then07
+8083: 8980 0800 8e 00                                                                                                  08 return
+8089: cb80 0900 3a 8f e6 7a 7a 2d 63 6f 6e 74 61 64 6f 72 69 2c 20 7a 79 2d 63 6f 6e 74 61 64 6f 72 65 2c 20 7a        9 'zz-contadori, zy-contadore, zx-temp, zw-auxiliar, zv-tecla
+8095:           78 2d 74 65 6d 70 2c 20 7a 77 2d 61 75 78 69 6c 69 61 72 2c 20 7a 76 2d 74 65 63 6c 61 00              
+80cb: 0000                                                                                                             end
+
+' -------------------------------------
+' Statistics
+' -------------------------------------
+
+lines 9
+start &h8000 > 32768
+end   &h80cc > 32972
+size  &h00cd > 205

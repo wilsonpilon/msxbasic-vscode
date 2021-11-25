@@ -1,4 +1,39 @@
 {
+    "abs()": {
+        "prefix": "abs",
+        "description": "Return absolute value of number",
+        "body": [
+            "abs(${1:var})"
+        ]
+    },
+    "asc()": {
+        "prefix": "asc",
+        "description": "Return ASCII code from a CHAR",
+        "body": [
+            "asc(\"${1:var}\")"
+        ]
+    },
+    "atn()": {
+        "prefix": "atn",
+        "description": "Return arc rangent from a value (radius)",
+        "body": [
+            "atn(${1:var})"
+        ]
+    },
+    "auto": {
+        "prefix": "auto",
+        "description": "Provides auto numeration for basic line (not used in MSX Basic Dignified)",
+        "body": [
+            "auto ${1:line}, ${3:increment}"
+        ]
+    },
+    "base": {
+        "prefix": "base",
+        "description": "Return/Change VDP table address",
+        "body": [
+            "base ${1:number}${2|=,\\ |}"
+        ]
+    },
     "For Loop": {
         "prefix": "for-next",
         "body": [

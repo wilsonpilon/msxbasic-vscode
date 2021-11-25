@@ -1,0 +1,28 @@
+' -------------------------------------
+' MSX Basic Tokenizer: "main.asc"
+' Date: 2021-11-25 08:13:45
+' -------------------------------------
+
+8000: ff                                                                                                               start
+8001: 2b80 0100 3a 8f e6 43 6f 6e 76 65 72 74 65 64 20 77 69 74 68 20 4d 53 58 20 42 61 73 69 63 20 44 69 67 6e        01 'Converted with MSX Basic Dignified
+800d:           69 66 69 65 64 00                                                                                      
+802b: 6280 0200 3a 8f e6 68 74 74 70 73 3a 2f 2f 67 69 74 68 75 62 2e 63 6f 6d 2f 66 61 72 69 71 75 65 31 2f 6d        02 'https://github.com/farique1/msx-basic-dignified
+8037:           73 78 2d 62 61 73 69 63 2d 64 69 67 6e 69 66 69 65 64 00                                               
+8062: 7780 0300 ac 41 f2 5a 3a 8d 0e 04 00 3a 8d 0e 08 00 3a 81 00                                                     03 DEFINTA-Z:GOSUB4:GOSUB8:END
+8077: 8580 0400 c5 11 3a a0 0f 28 3a cc eb 00                                                                          04 SCREEN0:WIDTH40:KEYOFF
+8085: a080 0500 9f 3a d8 0f 0f 2c 11 3a 91 22 4d 53 58 20 50 72 6f 67 72 61 6d 22 00                                   05 CLS:LOCATE15,0:PRINT"MSX Program"
+80a0: b680 0600 41 41 24 ef ec 3a 8b 41 41 24 ef 22 22 da 0e 06 00 00                                                  06 AA$=INKEY$:IFAA$=""THEN06
+80b6: bc80 0700 8e 00                                                                                                  07 RETURN
+80bc: ce80 0800 d8 11 2c 14 3a 91 22 53 74 61 72 74 22 00                                                              08 LOCATE0,3:PRINT"Start"
+80ce: e480 0900 41 41 24 ef ec 3a 8b 41 41 24 ef 22 22 da 0e 09 00 00                                                  09 AA$=INKEY$:IFAA$=""THEN09
+80e4: ea80 0a00 8e 00                                                                                                  10 RETURN
+80ea: 0000                                                                                                             end
+
+' -------------------------------------
+' Statistics
+' -------------------------------------
+
+lines 10
+start &h8000 > 32768
+end   &h80eb > 33003
+size  &h00ec > 236
